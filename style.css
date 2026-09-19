@@ -1841,3 +1841,50 @@ h4 {
     cursor: pointer;
     accent-color: #10b981;
 }
+
+
+/* =========================================
+   FINANCIAL GOAL ACTION BUTTONS
+   ========================================= */
+
+.goal-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+.goal-action-button,
+.goal-delete-button {
+    border: none;
+    border-radius: 6px;
+    padding: 6px 9px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.goal-action-button {
+    background: #f0f2ff;
+    color: #5146b8;
+}
+
+.goal-action-button:hover {
+    transform: translateY(-1px);
+    background: #e4e6ff;
+}
+
+.goal-delete-button {
+    background: #fff0f0;
+    color: #d33a3a;
+}
+
+.goal-delete-button:hover {
+    transform: translateY(-1px);
+    background: #ffe0e0;
+}
+
+.goal-percentage {
+    white-space: nowrap;
+}

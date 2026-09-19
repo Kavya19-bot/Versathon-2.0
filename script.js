@@ -507,6 +507,47 @@ function renderBills() {
    FINANCIAL GOALS
    ========================================= */
 
+// function renderGoals() {
+//     const goalsList = document.getElementById("goalsList");
+
+//     const visibleGoals = showAllGoals ? goals : goals.slice(0, 4);
+
+//     if (visibleGoals.length === 0) {
+//         goalsList.innerHTML = "<p>No goals added yet.</p>";
+//         return;
+//     }
+
+//     goalsList.innerHTML = visibleGoals.map(goal => {
+//         const percentage = goal.target > 0
+//             ? Math.min((goal.saved / goal.target) * 100, 100)
+//             : 0;
+
+//         return `
+//             <article class="goal-card">
+//                 <div class="goal-icon ${escapeHTML(goal.color)}">
+//                     ${escapeHTML(goal.icon)}
+//                 </div>
+
+//                 <div class="goal-info">
+//                     <h4>${escapeHTML(goal.name)}</h4>
+//                     <p>${formatMoney(goal.saved)} / ${formatMoney(goal.target)}</p>
+
+//                     <div class="progress-track">
+//                         <div class="progress-fill ${escapeHTML(goal.color)}-fill"
+//                              style="width:${percentage}%"></div>
+//                     </div>
+//                 </div>
+
+//                 <strong>${Math.round(percentage)}%</strong>
+//             </article>
+//         `;
+//     }).join("");
+// }
+
+    /* =========================================
+   FINANCIAL GOALS
+   ========================================= */
+
 function renderGoals() {
     const goalsList = document.getElementById("goalsList");
 
@@ -518,32 +559,225 @@ function renderGoals() {
     }
 
     goalsList.innerHTML = visibleGoals.map(goal => {
+
         const percentage = goal.target > 0
             ? Math.min((goal.saved / goal.target) * 100, 100)
             : 0;
 
+        const completed = percentage >= 100;
+
         return `
             <article class="goal-card">
+
                 <div class="goal-icon ${escapeHTML(goal.color)}">
                     ${escapeHTML(goal.icon)}
                 </div>
 
                 <div class="goal-info">
+
                     <h4>${escapeHTML(goal.name)}</h4>
-                    <p>${formatMoney(goal.saved)} / ${formatMoney(goal.target)}</p>
+
+                    <p>
+                        ${formatMoney(goal.saved)}
+                        /
+                        ${formatMoney(goal.target)}
+                    </p>
 
                     <div class="progress-track">
-                        <div class="progress-fill ${escapeHTML(goal.color)}-fill"
-                             style="width:${percentage}%"></div>
+
+                        <div
+                            class="progress-fill ${escapeHTML(goal.color)}-fill"
+                            style="width:${percentage}%">
+                        </div>
+
                     </div>
+
+                    <div class="goal-actions">
+
+                        <button
+                            class="goal-action-button"
+                            onclick="addGoalMoney(${goal.id})">
+                            + Add Money
+                        </button>
+
+                        <button
+                            class="goal-action-button"
+                            onclick="increaseGoalTarget(${goal.id})">
+                            Increase Goal
+                        </button>
+
+                        ${
+                            completed
+                            ? `
+                                <button
+                                    class="goal-delete-button"
+                                    onclick="deleteGoal(${goal.id})">
+                                    Delete Goal
+                                </button>
+                            `
+                            : ""
+                        }
+
+                    </div>
+
                 </div>
 
-                <strong>${Math.round(percentage)}%</strong>
+                <strong class="goal-percentage">
+                    ${Math.round(percentage)}%
+                </strong>
+
             </article>
         `;
     }).join("");
 }
 
+
+/* =========================================
+   ADD MONEY TO GOAL
+   ========================================= */
+
+function addGoalMoney(goalId) {
+
+    const goal = goals.find(item => item.id === goalId);
+
+    if (!goal) {
+        return;
+    }
+
+    if (goal.saved >= goal.target) {
+        alert("This goal is already 100% completed.");
+        return;
+    }
+
+    const remaining = goal.target - goal.saved;
+
+    const amountText = prompt(
+        `How much money do you want to add?\n\nRemaining: ${formatMoney(remaining)}`
+    );
+
+    if (amountText === null) {
+        return;
+    }
+
+    const amount = Number(amountText);
+
+    if (!Number.isFinite(amount) || amount <= 0) {
+        alert("Please enter a valid amount.");
+        return;
+    }
+
+    goal.saved += amount;
+
+    if (goal.saved > goal.target) {
+        goal.saved = goal.target;
+    }
+
+    saveData("finwiseGoals", goals);
+
+    renderGoals();
+}
+
+
+/* =========================================
+   INCREASE GOAL TARGET
+   ========================================= */
+
+function increaseGoalTarget(goalId) {
+
+    const goal = goals.find(item => item.id === goalId);
+
+    if (!goal) {
+        return;
+    }
+
+    const amountText = prompt(
+        `Current goal: ${formatMoney(goal.target)}\n\nEnter the new total goal amount:`
+    );
+
+    if (amountText === null) {
+        return;
+    }
+
+    const newTarget = Number(amountText);
+
+    if (!Number.isFinite(newTarget) || newTarget <= 0) {
+        alert("Please enter a valid goal amount.");
+        return;
+    }
+
+    if (newTarget <= goal.saved) {
+        alert(
+            `The new goal must be greater than the saved amount (${formatMoney(goal.saved)}).`
+        );
+        return;
+    }
+
+    goal.target = newTarget;
+
+    saveData("finwiseGoals", goals);
+
+    renderGoals();
+}
+
+
+/* =========================================
+   DELETE COMPLETED GOAL
+   ========================================= */
+
+// function deleteGoal(goalId) {
+
+//     const goal = goals.find(item => item.id === goalId);
+
+//     if (!goal) {
+//         return;
+//     }
+
+//     if (goal.saved < goal.target) {
+//         alert("You can delete a goal only after reaching 100%.");
+//         return;
+//     }
+
+//     const confirmDelete = confirm(
+//         `Delete "${goal.name}"?\n\nThis goal has reached 100%.`
+//     );
+
+//     if (!confirmDelete) {
+//         return;
+//     }
+
+//     goals = goals.filter(item => item.id !== goalId);
+
+//     saveData("finwiseGoals", goals);
+
+//     renderGoals();
+// }
+
+/* =========================================
+   DELETE FINANCIAL GOAL
+   ========================================= */
+
+function deleteGoal(goalId) {
+
+    const goal = goals.find(item => item.id === goalId);
+
+    if (!goal) {
+        return;
+    }
+
+    const confirmDelete = confirm(
+        `Are you sure you want to delete "${goal.name}"?`
+    );
+
+    if (!confirmDelete) {
+        return;
+    }
+
+    goals = goals.filter(item => item.id !== goalId);
+
+    saveData("finwiseGoals", goals);
+
+    renderGoals();
+}
 
 /* =========================================
    ALERTS
@@ -1034,3 +1268,5 @@ function markAsPaid(billId, checkbox) {
     renderBills();
     renderAlerts();
 }
+
+
