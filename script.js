@@ -464,6 +464,7 @@ function updateSpendingChart(expenses) {
    BILLS
    ========================================= */
 
+
 function renderBills() {
     const billList = document.getElementById("billList");
 
@@ -481,7 +482,18 @@ function renderBills() {
             <div class="bill-row">
                 <span>${escapeHTML(bill.name)}</span>
                 <span>${formatMoney(bill.amount)}</span>
-                <span>
+
+                <span class="bill-status-cell">
+                    ${
+                        paid
+                        ? ""
+                        : `<input
+                            type="checkbox"
+                            class="bill-paid-checkbox"
+                            onchange="markAsPaid(${bill.id}, this)"
+                          >`
+                    }
+
                     <i class="status ${paid ? "paid" : "due"}">
                         ${escapeHTML(bill.status)}
                     </i>
@@ -490,7 +502,6 @@ function renderBills() {
         `;
     }).join("");
 }
-
 
 /* =========================================
    FINANCIAL GOALS
@@ -1055,3 +1066,16 @@ function renderDashboard() {
 
 loadProfile();
 renderDashboard();
+
+function markAsPaid(billId, checkbox) {
+    const bill = bills.find(item => item.id === billId);
+
+    if (!bill) return;
+
+    bill.status = checkbox.checked ? "Paid" : "Due in 2 days";
+
+    saveData("finwiseBills", bills);
+
+    renderBills();
+    renderAlerts();
+}
