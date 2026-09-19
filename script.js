@@ -941,7 +941,7 @@ document.getElementById("saveProfile").addEventListener("click", function () {
     localStorage.setItem("finwiseUserName", name);
 
     document.querySelector(".topbar h1").textContent =
-        `Good Morning, ${name}! 👋`;
+        `Hello, ${name}! 👋`;
 
     document.getElementById("profileButton").textContent =
         name.charAt(0).toUpperCase();
@@ -957,7 +957,7 @@ function loadProfile() {
         document.getElementById("userName").value = savedName;
 
         document.querySelector(".topbar h1").textContent =
-            `Good Morning, ${savedName}! 👋`;
+            `Hello, ${savedName}! 👋`;
 
         document.getElementById("profileButton").textContent =
             savedName.charAt(0).toUpperCase();
