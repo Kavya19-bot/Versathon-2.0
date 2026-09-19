@@ -310,12 +310,69 @@ function getTodayString() {
    TRANSACTIONS
    ========================================= */
 
+// function renderTransactions() {
+//     const list = document.getElementById("transactionList");
+
+//     const sorted = [...transactions].sort((a, b) => {
+//         return b.date.localeCompare(a.date) || b.id - a.id;
+//     });
+
+//     const visible = showAllTransactions ? sorted : sorted.slice(0, 5);
+
+//     if (visible.length === 0) {
+//         list.innerHTML = "<p>No transactions available.</p>";
+//         return;
+//     }
+
+//     list.innerHTML = visible.map(item => {
+//         const isIncome = item.type === "income";
+
+//         const iconClass = isIncome
+//             ? "salary"
+//             : getCategoryClass(item.category);
+
+//         const amountClass = isIncome ? "positive" : "negative";
+//         const sign = isIncome ? "+" : "-";
+
+        
+// return `
+//     <div class="transaction-row">
+
+//         <div class="transaction-icon ${iconClass}">
+//             ${isIncome ? "₹" : escapeHTML(item.name.charAt(0).toUpperCase())}
+//         </div>
+
+//         <div class="transaction-info">
+//             <strong>${escapeHTML(item.name)}</strong>
+//             <span>${escapeHTML(item.category)}</span>
+//         </div>
+
+//         <div class="transaction-amount">
+//             <strong class="${amountClass}">
+//                 ${sign} ${formatMoney(item.amount)}
+//             </strong>
+//             <span>${formatDate(item.date)}</span>
+//         </div>
+
+//         <button
+//             type="button"
+//             class="transaction-delete-button"
+//             onclick="deleteTransaction(${item.id})"
+//             aria-label="Delete ${escapeHTML(item.name)}">
+//             Delete
+//         </button>
+
+//     </div>
+// `;
+//     }).join("");
+// }
+
 function renderTransactions() {
     const list = document.getElementById("transactionList");
 
-    const sorted = [...transactions].sort((a, b) => {
-        return b.date.localeCompare(a.date) || b.id - a.id;
-    });
+    const sorted = [...transactions].sort((a, b) =>
+        b.date.localeCompare(a.date) || b.id - a.id
+    );
 
     const visible = showAllTransactions ? sorted : sorted.slice(0, 5);
 
@@ -326,11 +383,7 @@ function renderTransactions() {
 
     list.innerHTML = visible.map(item => {
         const isIncome = item.type === "income";
-
-        const iconClass = isIncome
-            ? "salary"
-            : getCategoryClass(item.category);
-
+        const iconClass = isIncome ? "salary" : getCategoryClass(item.category);
         const amountClass = isIncome ? "positive" : "negative";
         const sign = isIncome ? "+" : "-";
 
@@ -351,6 +404,12 @@ function renderTransactions() {
                     </strong>
                     <span>${formatDate(item.date)}</span>
                 </div>
+
+                <button type="button"
+                    class="delete-button"
+                    onclick="deleteTransaction(${item.id})">
+                    Delete
+                </button>
             </div>
         `;
     }).join("");
@@ -371,6 +430,35 @@ function getCategoryClass(category) {
     return classes[category] || "travel";
 }
 
+/* =========================================
+   DELETE TRANSACTION
+   ========================================= */
+
+function deleteTransaction(transactionId) {
+    const transaction = transactions.find(
+        item => item.id === transactionId
+    );
+
+    if (!transaction) {
+        return;
+    }
+
+    const confirmDelete = confirm(
+        `Are you sure you want to delete "${transaction.name}"?`
+    );
+
+    if (!confirmDelete) {
+        return;
+    }
+
+    transactions = transactions.filter(
+        item => item.id !== transactionId
+    );
+
+    saveData("finwiseTransactions", transactions);
+
+    renderDashboard();
+}
 
 /* =========================================
    SPENDING CHART
@@ -465,6 +553,7 @@ function updateSpendingChart(expenses) {
    ========================================= */
 
 
+
 function renderBills() {
     const billList = document.getElementById("billList");
 
@@ -480,7 +569,9 @@ function renderBills() {
 
         return `
             <div class="bill-row">
+
                 <span>${escapeHTML(bill.name)}</span>
+
                 <span>${formatMoney(bill.amount)}</span>
 
                 <span class="bill-status-cell">
@@ -491,6 +582,7 @@ function renderBills() {
                             type="checkbox"
                             class="bill-paid-checkbox"
                             onchange="markAsPaid(${bill.id}, this)"
+                            aria-label="Mark ${escapeHTML(bill.name)} as paid"
                           >`
                     }
 
@@ -498,9 +590,42 @@ function renderBills() {
                         ${escapeHTML(bill.status)}
                     </i>
                 </span>
+
+                <span>
+                    <button
+                        type="button"
+                        class="bill-delete-button"
+                        onclick="deleteBill(${bill.id})">
+                        Delete
+                    </button>
+                </span>
+
             </div>
         `;
     }).join("");
+}
+
+function deleteBill(billId) {
+    const bill = bills.find(item => item.id === billId);
+
+    if (!bill) {
+        return;
+    }
+
+    const confirmDelete = confirm(
+        `Are you sure you want to delete "${bill.name}"?`
+    );
+
+    if (!confirmDelete) {
+        return;
+    }
+
+    bills = bills.filter(item => item.id !== billId);
+
+    saveData("finwiseBills", bills);
+
+    renderBills();
+    renderAlerts();
 }
 
 /* =========================================
@@ -1212,9 +1337,6 @@ document.querySelectorAll(".nav-link").forEach(link => {
    FILTER CONTROLS
    ========================================= */
 
-document.getElementById("spendingFilter").addEventListener("change", function () {
-    updateSpendingChart();
-});
 
 
 document.getElementById("chartFilter").addEventListener("change", function () {
@@ -1253,7 +1375,7 @@ function renderDashboard() {
    START DASHBOARD
    ========================================= */
 
-loadProfile();
+
 renderDashboard();
 
 function markAsPaid(billId, checkbox) {

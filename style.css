@@ -1889,6 +1889,117 @@ h4 {
     white-space: nowrap;
 }
 
+
+
+/* =========================================
+   BILL DELETE BUTTON
+   ========================================= */
+
+.bill-row {
+    grid-template-columns: minmax(0, 1fr) 75px 90px auto;
+    gap: 8px;
+}
+
+.bill-delete-button {
+    background: #fff0f0;
+    color: #d33a3a;
+    border: 1px solid #ffd6d6;
+    border-radius: 6px;
+    padding: 6px 9px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.bill-delete-button:hover {
+    background: #ffe0e0;
+    transform: translateY(-1px);
+}
+
+.bill-delete-button:focus-visible {
+    outline: 2px solid #d33a3a;
+    outline-offset: 2px;
+}
+
+@media (max-width: 700px) {
+    .bill-row {
+        grid-template-columns: minmax(0, 1fr) 65px 85px auto;
+        gap: 5px;
+    }
+
+    .bill-delete-button {
+        padding: 5px 6px;
+        font-size: 10px;
+    }
+}
+
+/* =========================================
+   TRANSACTION DELETE BUTTON
+   ========================================= */
+
+.transaction-delete-button {
+    background: #fff0f0;
+    color: #d33a3a;
+    border: 1px solid #ffd6d6;
+    border-radius: 6px;
+    padding: 6px 9px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: 0.2s ease;
+}
+
+.transaction-delete-button:hover {
+    background: #ffe0e0;
+    transform: translateY(-1px);
+}
+
+.transaction-delete-button:focus-visible {
+    outline: 2px solid #d33a3a;
+    outline-offset: 2px;
+}
+
+@media (max-width: 700px) {
+    .transaction-delete-button {
+        padding: 5px 6px;
+        font-size: 10px;
+    }
+}
+
+.delete-button {
+    border: none;
+    border-radius: 6px;
+    padding: 7px 12px;
+    background: #ffe8e8;
+    color: #c62828;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.delete-button:hover {
+    background: #ffd2d2;
+}
+
+.paid-control {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    cursor: pointer;
+}
+
+.paid-control input {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.bill-status-cell {
+    display: flex;
+    align-items: center;
+}
+
 /* ============================= */
 /* MONEY COACH PAGE */
 /* ============================= */
