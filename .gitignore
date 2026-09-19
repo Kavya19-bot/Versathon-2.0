@@ -1,0 +1,24 @@
+# Dependencies — ignore in every folder
+**/node_modules/
+
+# Environment variables and secrets
+.env
+**/.env
+.env.*
+**/.env.*
+
+# Allow safe example environment files
+!.env.example
+!**/.env.example
+
+# Logs
+*.log
+npm-debug.log*
+
+# Generated build files
+dist/
+build/
+
+# Operating system files
+.DS_Store
+Thumbs.db

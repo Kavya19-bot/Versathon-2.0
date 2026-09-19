@@ -1258,15 +1258,24 @@ renderDashboard();
 
 function markAsPaid(billId, checkbox) {
     const bill = bills.find(item => item.id === billId);
-
     if (!bill) return;
 
     bill.status = checkbox.checked ? "Paid" : "Due in 2 days";
-
     saveData("finwiseBills", bills);
-
     renderBills();
     renderAlerts();
 }
 
+async function loadTransactions() {
+    try {
+        const response = await fetch(
+            "http://localhost:3000/api/transactions"
+        );
 
+        const transactions = await response.json();
+
+        console.log(transactions);
+    } catch (error) {
+        console.error("Connection error:", error);
+    }
+}
