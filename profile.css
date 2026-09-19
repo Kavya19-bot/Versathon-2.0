@@ -1,0 +1,413 @@
+/* =========================================
+   FINWISE PROFILE PAGE
+   ========================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f3f7fc;
+    color: #172b4d;
+}
+
+
+/* =========================================
+   MAIN PAGE
+   ========================================= */
+
+.profile-page {
+    min-height: 100vh;
+    padding: 35px 50px;
+}
+
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+.profile-header {
+    background: #142440;
+    color: white;
+
+    padding: 28px 35px;
+
+    border-radius: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 25px;
+}
+
+.profile-header h1 {
+    font-size: 28px;
+    margin-bottom: 7px;
+}
+
+.profile-header p {
+    color: #cbd6e8;
+    font-size: 14px;
+}
+
+
+/* =========================================
+   BACK BUTTON
+   ========================================= */
+
+.back-button {
+    background: #2864e8;
+    color: white;
+
+    text-decoration: none;
+
+    padding: 11px 18px;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    white-space: nowrap;
+}
+
+.back-button:hover {
+    background: #1e50bd;
+}
+
+
+/* =========================================
+   PROFILE CARD
+   ========================================= */
+
+.profile-card {
+    background: white;
+
+    border: 1px solid #dce5f0;
+
+    border-radius: 15px;
+
+    padding: 30px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================================
+   PROFILE AVATAR
+   ========================================= */
+
+.profile-avatar {
+    width: 80px;
+    height: 80px;
+
+    border-radius: 50%;
+
+    background: #2864e8;
+
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.profile-info h2 {
+    font-size: 22px;
+    margin-bottom: 6px;
+}
+
+.profile-info p {
+    color: #71809a;
+}
+
+
+/* =========================================
+   SETTINGS CARD
+   ========================================= */
+
+.settings-card {
+    background: white;
+
+    border: 1px solid #dce5f0;
+
+    border-radius: 15px;
+
+    padding: 30px;
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================================
+   SECTION TITLE
+   ========================================= */
+
+.section-title {
+    margin-bottom: 25px;
+}
+
+.section-title h2 {
+    font-size: 20px;
+    margin-bottom: 6px;
+}
+
+.section-title p {
+    color: #71809a;
+    font-size: 14px;
+}
+
+
+/* =========================================
+   FORM
+   ========================================= */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+
+    font-weight: bold;
+
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    width: 100%;
+
+    padding: 12px 14px;
+
+    border: 1px solid #dce5f0;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: #2864e8;
+}
+
+
+/* =========================================
+   SAVE BUTTON
+   ========================================= */
+
+.save-button {
+    background: #2864e8;
+
+    color: white;
+
+    border: none;
+
+    padding: 12px 22px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    font-weight: bold;
+}
+
+.save-button:hover {
+    background: #1e50bd;
+}
+
+
+/* =========================================
+   SUCCESS MESSAGE
+   ========================================= */
+
+.success-message {
+    margin-top: 15px;
+
+    font-size: 14px;
+
+    color: #15956f;
+}
+
+
+/* =========================================
+   ACCOUNT SETTINGS
+   ========================================= */
+
+.setting-row {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 18px 0;
+
+    border-bottom: 1px solid #edf1f6;
+}
+
+.setting-row:last-child {
+    border-bottom: none;
+}
+
+.setting-row strong {
+    display: block;
+
+    margin-bottom: 5px;
+}
+
+.setting-row p {
+    color: #71809a;
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   SELECT
+   ========================================= */
+
+.setting-row select {
+    padding: 10px 14px;
+
+    border: 1px solid #dce5f0;
+
+    border-radius: 8px;
+
+    background: white;
+
+    outline: none;
+}
+
+
+/* =========================================
+   TOGGLE SWITCH
+   ========================================= */
+
+.switch {
+    position: relative;
+
+    width: 48px;
+    height: 26px;
+
+    display: inline-block;
+}
+
+.switch input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+
+    inset: 0;
+
+    background: #c8d2df;
+
+    border-radius: 30px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.slider::before {
+    content: "";
+
+    position: absolute;
+
+    width: 20px;
+    height: 20px;
+
+    left: 3px;
+    top: 3px;
+
+    background: white;
+
+    border-radius: 50%;
+
+    transition: 0.3s;
+}
+
+.switch input:checked + .slider {
+    background: #2864e8;
+}
+
+.switch input:checked + .slider::before {
+    transform: translateX(22px);
+}
+
+
+/* =========================================
+   DANGER / INFORMATION
+   ========================================= */
+
+.danger-card {
+    background: #fafbfd;
+}
+
+.danger-card h2 {
+    margin-bottom: 8px;
+}
+
+.danger-card p {
+    color: #71809a;
+    font-size: 14px;
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 700px) {
+
+    .profile-page {
+        padding: 20px;
+    }
+
+    .profile-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .profile-header h1 {
+        font-size: 23px;
+    }
+
+    .profile-card {
+        padding: 22px;
+    }
+
+    .settings-card {
+        padding: 22px;
+    }
+
+    .setting-row {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .back-button {
+        width: 100%;
+        text-align: center;
+    }
+}

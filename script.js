@@ -936,46 +936,6 @@ document.getElementById("viewAlerts").addEventListener("click", function () {
     renderAlerts();
 });
 
-
-/* =========================================
-   PROFILE
-   ========================================= */
-
-document.getElementById("saveProfile").addEventListener("click", function () {
-    const name = document.getElementById("userName").value.trim();
-
-    if (!name) {
-        alert("Please enter your name.");
-        return;
-    }
-
-    localStorage.setItem("finwiseUserName", name);
-
-    document.querySelector(".topbar h1").textContent =
-        `Hello, ${name}! 👋`;
-
-    document.getElementById("profileButton").textContent =
-        name.charAt(0).toUpperCase();
-
-    alert("Profile updated successfully.");
-});
-
-
-function loadProfile() {
-    const savedName = localStorage.getItem("finwiseUserName");
-
-    if (savedName) {
-        document.getElementById("userName").value = savedName;
-
-        document.querySelector(".topbar h1").textContent =
-            `Hello, ${savedName}! 👋`;
-
-        document.getElementById("profileButton").textContent =
-            savedName.charAt(0).toUpperCase();
-    }
-}
-
-
 /* =========================================
    OTHER BUTTONS
    ========================================= */
@@ -996,12 +956,7 @@ document.getElementById("notificationButton").addEventListener("click", function
     });
 });
 
-
-document.getElementById("profileButton").addEventListener("click", function () {
-    document.getElementById("settings").scrollIntoView({
-        behavior: "smooth"
-    });
-});
+;
 
 
 /* =========================================

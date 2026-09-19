@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SaveSense - Profile & Settings</title>
+
+    <link rel="stylesheet" href="profile.css">
+</head>
+
+<body>
+
+    <div class="profile-page">
+
+        <!-- HEADER -->
+        <header class="profile-header">
+
+            <div>
+                <h1>Profile & Settings</h1>
+                <p>Manage your personal information and SaveSense profile.</p>
+            </div>
+
+            <a href="index.html" class="back-button">
+                ← Back to Dashboard
+            </a>
+
+        </header>
+
+
+        <!-- PROFILE CARD -->
+        <section class="profile-card">
+
+            <div class="profile-avatar" id="profileAvatar">
+                S
+            </div>
+
+            <div class="profile-info">
+                <h2 id="displayName">Shreya</h2>
+                <p>SaveSense Personal Finance User</p>
+            </div>
+
+        </section>
+
+
+        <!-- EDIT PROFILE -->
+        <section class="settings-card">
+
+            <div class="section-title">
+                <h2>Personal Information</h2>
+                <p>Update your profile information below.</p>
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="profileName">
+                    Your Name
+                </label>
+
+                <input
+                    type="text"
+                    id="profileName"
+                    placeholder="Enter your name"
+                    value="Shreya"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="profileEmail">
+                    Email Address
+                </label>
+
+                <input
+                    type="email"
+                    id="profileEmail"
+                    placeholder="Enter your email"
+                >
+
+            </div>
+
+
+            <button class="save-button" id="saveProfile">
+                Save Changes
+            </button>
+
+            <p class="success-message" id="successMessage"></p>
+
+        </section>
+
+
+        <!-- ACCOUNT SETTINGS -->
+        <section class="settings-card">
+
+            <div class="section-title">
+
+                <h2>Account Settings</h2>
+
+                <p>
+                    Manage your SaveSense account preferences.
+                </p>
+
+            </div>
+
+
+            <div class="setting-row">
+
+                <div>
+                    <strong>Currency</strong>
+                    <p>Default currency used in SaveSense</p>
+                </div>
+
+                <select id="currency">
+
+                    <option value="INR">
+                        ₹ Indian Rupee
+                    </option>
+
+                    <option value="USD">
+                        $ US Dollar
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="setting-row">
+
+                <div>
+                    <strong>Notifications</strong>
+                    <p>Receive financial reminders and alerts</p>
+                </div>
+
+                <label class="switch">
+
+                    <input type="checkbox" id="notifications" checked>
+
+                    <span class="slider"></span>
+
+                </label>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <script src="profile.js"></script>
+
+</body>
+
+</html>
