@@ -1828,3 +1828,16 @@ h4 {
         transition: none !important;
     }
 }
+
+.bill-status-cell {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.bill-paid-checkbox {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: #10b981;
+}
