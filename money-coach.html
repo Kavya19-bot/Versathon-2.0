@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Money Coach - SaveSense</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="money-coach-page">
+
+        <header class="coach-topbar">
+
+            <button onclick="history.back()" class="back-button">
+                ← Back
+            </button>
+
+            <div>
+                <h1>💰 Money Coach</h1>
+                <p>Your personal AI financial assistant</p>
+            </div>
+
+        </header>
+
+
+        <main class="chat-container">
+
+            <div class="chat-header">
+
+                <div class="coach-avatar">
+                    ₹
+                </div>
+
+                <div>
+                    <h2>Money Coach</h2>
+                    <p>AI Financial Assistant</p>
+                </div>
+
+            </div>
+
+
+            <div class="chat-messages" id="chatMessages">
+
+                <div class="message bot-message">
+                    <strong>Money Coach</strong>
+                    <p>
+                        👋 Hi! I'm your Money Coach.
+                        I can help you understand your spending,
+                        budget, savings and financial goals.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="chat-input-area">
+
+                <input
+                    type="text"
+                    id="coachInput"
+                    placeholder="Ask something like: How can I save more?"
+                >
+
+                <button id="sendMessage">
+                    Send
+                </button>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <script src="money-coach.js"></script>
+
+</body>
+
+</html>
