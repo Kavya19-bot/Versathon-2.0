@@ -24,7 +24,6 @@ function sendMessage() {
     }
 
 
-    // Display user message
 
     const userMessage = document.createElement("div");
 
@@ -41,7 +40,6 @@ function sendMessage() {
     input.value = "";
 
 
-    // Temporary AI response
 
     setTimeout(() => {
 

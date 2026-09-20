@@ -1,8 +1,3 @@
-/* =========================================
-   FINWISE PROFILE PAGE JAVASCRIPT
-   ========================================= */
-
-
 const profileName = document.getElementById("profileName");
 const profileEmail = document.getElementById("profileEmail");
 const profilePhone = document.getElementById("profilePhone");
@@ -14,9 +9,6 @@ const saveProfile = document.getElementById("saveProfile");
 const successMessage = document.getElementById("successMessage");
 
 
-/* =========================================
-   LOAD PROFILE
-   ========================================= */
 
 function loadProfile() {
 
@@ -50,11 +42,6 @@ function loadProfile() {
         profilePhone.value = savedPhone;
     }
 }
-
-
-/* =========================================
-   SAVE PROFILE
-   ========================================= */
 
 saveProfile.addEventListener("click", function () {
 
@@ -108,9 +95,5 @@ saveProfile.addEventListener("click", function () {
 
 });
 
-
-/* =========================================
-   LOAD PROFILE WHEN PAGE OPENS
-   ========================================= */
 
 renderDashboardisre();

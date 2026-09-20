@@ -1,12 +1,3 @@
-/* =========================================
-   FINWISE DASHBOARD JAVASCRIPT
-   ========================================= */
-
-
-/* =========================================
-   INITIAL DATA
-   ========================================= */
-
 const defaultTransactions = [
     {
         id: 1,
@@ -121,10 +112,6 @@ const defaultGoals = [
 ];
 
 
-/* =========================================
-   LOAD AND SAVE DATA
-   ========================================= */
-
 function loadData(key, defaultValue) {
     try {
         const saved = localStorage.getItem(key);
@@ -167,21 +154,11 @@ let showAllBills = false;
 let showAllGoals = false;
 let showAllAlerts = false;
 
-
-/* =========================================
-   ELEMENTS
-   ========================================= */
-
 const modalOverlay = document.getElementById("modalOverlay");
 const modalTitle = document.getElementById("modalTitle");
 const formFields = document.getElementById("formFields");
 const actionForm = document.getElementById("actionForm");
 const formError = document.getElementById("formError");
-
-
-/* =========================================
-   FORMAT HELPERS
-   ========================================= */
 
 function formatMoney(amount) {
     return "₹" + Number(amount).toLocaleString("en-IN", {
@@ -216,10 +193,6 @@ function escapeHTML(value) {
 }
 
 
-/* =========================================
-   CALCULATE TOTALS
-   ========================================= */
-
 function calculateTotals() {
     const income = transactions
         .filter(item => item.type === "income")
@@ -248,10 +221,6 @@ function calculateTotals() {
     updateSpendingChart(expenses);
 }
 
-
-/* =========================================
-   BUDGET RISK
-   ========================================= */
 
 function updateBudgetRisk(expenses) {
     const monthlyPercentage = monthlyBudget > 0
@@ -306,66 +275,6 @@ function getTodayString() {
 }
 
 
-/* =========================================
-   TRANSACTIONS
-   ========================================= */
-
-// function renderTransactions() {
-//     const list = document.getElementById("transactionList");
-
-//     const sorted = [...transactions].sort((a, b) => {
-//         return b.date.localeCompare(a.date) || b.id - a.id;
-//     });
-
-//     const visible = showAllTransactions ? sorted : sorted.slice(0, 5);
-
-//     if (visible.length === 0) {
-//         list.innerHTML = "<p>No transactions available.</p>";
-//         return;
-//     }
-
-//     list.innerHTML = visible.map(item => {
-//         const isIncome = item.type === "income";
-
-//         const iconClass = isIncome
-//             ? "salary"
-//             : getCategoryClass(item.category);
-
-//         const amountClass = isIncome ? "positive" : "negative";
-//         const sign = isIncome ? "+" : "-";
-
-        
-// return `
-//     <div class="transaction-row">
-
-//         <div class="transaction-icon ${iconClass}">
-//             ${isIncome ? "₹" : escapeHTML(item.name.charAt(0).toUpperCase())}
-//         </div>
-
-//         <div class="transaction-info">
-//             <strong>${escapeHTML(item.name)}</strong>
-//             <span>${escapeHTML(item.category)}</span>
-//         </div>
-
-//         <div class="transaction-amount">
-//             <strong class="${amountClass}">
-//                 ${sign} ${formatMoney(item.amount)}
-//             </strong>
-//             <span>${formatDate(item.date)}</span>
-//         </div>
-
-//         <button
-//             type="button"
-//             class="transaction-delete-button"
-//             onclick="deleteTransaction(${item.id})"
-//             aria-label="Delete ${escapeHTML(item.name)}">
-//             Delete
-//         </button>
-
-//     </div>
-// `;
-//     }).join("");
-// }
 
 function renderTransactions() {
     const list = document.getElementById("transactionList");
@@ -430,10 +339,6 @@ function getCategoryClass(category) {
     return classes[category] || "travel";
 }
 
-/* =========================================
-   DELETE TRANSACTION
-   ========================================= */
-
 function deleteTransaction(transactionId) {
     const transaction = transactions.find(
         item => item.id === transactionId
@@ -460,9 +365,6 @@ function deleteTransaction(transactionId) {
     renderDashboard();
 }
 
-/* =========================================
-   SPENDING CHART
-   ========================================= */
 
 function updateSpendingChart(expenses) {
     const categories = [
@@ -548,12 +450,6 @@ function updateSpendingChart(expenses) {
 }
 
 
-/* =========================================
-   BILLS
-   ========================================= */
-
-
-
 function renderBills() {
     const billList = document.getElementById("billList");
 
@@ -628,50 +524,6 @@ function deleteBill(billId) {
     renderAlerts();
 }
 
-/* =========================================
-   FINANCIAL GOALS
-   ========================================= */
-
-// function renderGoals() {
-//     const goalsList = document.getElementById("goalsList");
-
-//     const visibleGoals = showAllGoals ? goals : goals.slice(0, 4);
-
-//     if (visibleGoals.length === 0) {
-//         goalsList.innerHTML = "<p>No goals added yet.</p>";
-//         return;
-//     }
-
-//     goalsList.innerHTML = visibleGoals.map(goal => {
-//         const percentage = goal.target > 0
-//             ? Math.min((goal.saved / goal.target) * 100, 100)
-//             : 0;
-
-//         return `
-//             <article class="goal-card">
-//                 <div class="goal-icon ${escapeHTML(goal.color)}">
-//                     ${escapeHTML(goal.icon)}
-//                 </div>
-
-//                 <div class="goal-info">
-//                     <h4>${escapeHTML(goal.name)}</h4>
-//                     <p>${formatMoney(goal.saved)} / ${formatMoney(goal.target)}</p>
-
-//                     <div class="progress-track">
-//                         <div class="progress-fill ${escapeHTML(goal.color)}-fill"
-//                              style="width:${percentage}%"></div>
-//                     </div>
-//                 </div>
-
-//                 <strong>${Math.round(percentage)}%</strong>
-//             </article>
-//         `;
-//     }).join("");
-// }
-
-    /* =========================================
-   FINANCIAL GOALS
-   ========================================= */
 
 function renderGoals() {
     const goalsList = document.getElementById("goalsList");
@@ -757,10 +609,6 @@ function renderGoals() {
 }
 
 
-/* =========================================
-   ADD MONEY TO GOAL
-   ========================================= */
-
 function addGoalMoney(goalId) {
 
     const goal = goals.find(item => item.id === goalId);
@@ -803,10 +651,6 @@ function addGoalMoney(goalId) {
 }
 
 
-/* =========================================
-   INCREASE GOAL TARGET
-   ========================================= */
-
 function increaseGoalTarget(goalId) {
 
     const goal = goals.find(item => item.id === goalId);
@@ -845,41 +689,6 @@ function increaseGoalTarget(goalId) {
 }
 
 
-/* =========================================
-   DELETE COMPLETED GOAL
-   ========================================= */
-
-// function deleteGoal(goalId) {
-
-//     const goal = goals.find(item => item.id === goalId);
-
-//     if (!goal) {
-//         return;
-//     }
-
-//     if (goal.saved < goal.target) {
-//         alert("You can delete a goal only after reaching 100%.");
-//         return;
-//     }
-
-//     const confirmDelete = confirm(
-//         `Delete "${goal.name}"?\n\nThis goal has reached 100%.`
-//     );
-
-//     if (!confirmDelete) {
-//         return;
-//     }
-
-//     goals = goals.filter(item => item.id !== goalId);
-
-//     saveData("finwiseGoals", goals);
-
-//     renderGoals();
-// }
-
-/* =========================================
-   DELETE FINANCIAL GOAL
-   ========================================= */
 
 function deleteGoal(goalId) {
 
@@ -904,9 +713,7 @@ function deleteGoal(goalId) {
     renderGoals();
 }
 
-/* =========================================
-   ALERTS
-   ========================================= */
+
 
 function renderAlerts() {
     const alertList = document.getElementById("alertList");
@@ -962,10 +769,6 @@ function renderAlerts() {
 }
 
 
-/* =========================================
-   FINANCIAL INSIGHTS
-   ========================================= */
-
 function updateInsights(income, expenses, savings) {
     const insightText = document.getElementById("insightText");
     const coachMessage = document.getElementById("coachMessage");
@@ -1003,10 +806,6 @@ function updateInsights(income, expenses, savings) {
             : "Your recorded spending is above your current monthly budget. Reviewing your categories may help you plan your next steps.";
 }
 
-
-/* =========================================
-   MODAL FORM FIELDS
-   ========================================= */
 
 function field(label, name, type = "text", extra = "") {
     return `
@@ -1121,9 +920,6 @@ function closeModal() {
 }
 
 
-/* =========================================
-   FORM SUBMISSION
-   ========================================= */
 
 actionForm.addEventListener("submit", function (event) {
     event.preventDefault();
@@ -1227,9 +1023,6 @@ actionForm.addEventListener("submit", function (event) {
 });
 
 
-/* =========================================
-   QUICK ACTION BUTTONS
-   ========================================= */
 
 document.querySelectorAll(".quick-action").forEach(button => {
     button.addEventListener("click", function () {
@@ -1256,9 +1049,6 @@ document.addEventListener("keydown", function (event) {
 });
 
 
-/* =========================================
-   VIEW ALL BUTTONS
-   ========================================= */
 
 document.getElementById("viewTransactions").addEventListener("click", function () {
     showAllTransactions = !showAllTransactions;
@@ -1295,10 +1085,6 @@ document.getElementById("viewAlerts").addEventListener("click", function () {
     renderAlerts();
 });
 
-/* =========================================
-   OTHER BUTTONS
-   ========================================= */
-
 document.getElementById("coachButton").addEventListener("click", function () {
     document.getElementById("insights").scrollIntoView({
         behavior: "smooth"
@@ -1318,10 +1104,6 @@ document.getElementById("notificationButton").addEventListener("click", function
 ;
 
 
-/* =========================================
-   NAVIGATION ACTIVE STATE
-   ========================================= */
-
 document.querySelectorAll(".nav-link").forEach(link => {
     link.addEventListener("click", function () {
         document.querySelectorAll(".nav-link").forEach(item => {
@@ -1331,12 +1113,6 @@ document.querySelectorAll(".nav-link").forEach(link => {
         this.classList.add("active");
     });
 });
-
-
-/* =========================================
-   FILTER CONTROLS
-   ========================================= */
-
 
 
 document.getElementById("chartFilter").addEventListener("change", function () {
@@ -1358,10 +1134,6 @@ document.getElementById("monthSelect").addEventListener("change", function () {
 });
 
 
-/* =========================================
-   RENDER EVERYTHING
-   ========================================= */
-
 function renderDashboard() {
     calculateTotals();
     renderTransactions();
@@ -1370,10 +1142,6 @@ function renderDashboard() {
     renderAlerts();
 }
 
-
-/* =========================================
-   START DASHBOARD
-   ========================================= */
 
 
 renderDashboard();

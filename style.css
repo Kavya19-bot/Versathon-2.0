@@ -62,18 +62,9 @@ h4 {
 }
 
 
-/* =========================================
-   MAIN APP LAYOUT
-   ========================================= */
-
 .app {
     min-height: 100vh;
 }
-
-
-/* =========================================
-   FIXED LEFT SIDEBAR
-   ========================================= */
 
 .sidebar {
     position: fixed;
@@ -193,11 +184,6 @@ h4 {
     margin-bottom: 10px;
 }
 
-
-/* =========================================
-   MAIN CONTENT
-   ========================================= */
-
 .main-content {
     margin-left: 255px;
     margin-right: 395px;
@@ -285,11 +271,6 @@ h4 {
     padding: 10px 12px 24px 22px;
 }
 
-
-/* =========================================
-   COMMON PANEL STYLES
-   ========================================= */
-
 .panel {
     background: #fff;
     border: 1px solid var(--border);
@@ -331,11 +312,6 @@ h4 {
 .panel-heading a:hover {
     text-decoration: underline;
 }
-
-
-/* =========================================
-   SUMMARY CARDS
-   ========================================= */
 
 .summary-grid {
     display: grid;
@@ -438,10 +414,6 @@ h4 {
     color: #dc3151;
 }
 
-
-/* =========================================
-   CHARTS
-   ========================================= */
 
 .charts-grid {
     display: grid;
@@ -583,10 +555,6 @@ h4 {
 }
 
 
-/* =========================================
-   BAR CHART
-   ========================================= */
-
 .chart-legend {
     display: flex;
     gap: 18px;
@@ -696,10 +664,6 @@ h4 {
     margin-top: 7px;
 }
 
-
-/* =========================================
-   FINANCE RISK ALERTS
-   ========================================= */
 
 .risk-panel {
     padding: 14px;
@@ -841,11 +805,6 @@ h4 {
     line-height: 2.2;
 }
 
-
-/* =========================================
-   TRANSACTIONS AND BILLS
-   ========================================= */
-
 .data-grid {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -943,10 +902,6 @@ h4 {
 }
 
 
-/* =========================================
-   BILLS TABLE
-   ========================================= */
-
 .bill-table {
     width: 100%;
 }
@@ -997,10 +952,6 @@ h4 {
     color: #c18415;
 }
 
-
-/* =========================================
-   FINANCIAL GOALS
-   ========================================= */
 
 .goals-panel {
     margin-bottom: 10px;
@@ -1078,11 +1029,6 @@ h4 {
     font-size: 10px;
     align-self: flex-end;
 }
-
-
-/* =========================================
-   INSIGHTS AND SPENDING HABITS
-   ========================================= */
 
 .insights-panel,
 .personality-panel,
@@ -1171,11 +1117,6 @@ h4 {
     font-size: 11px;
 }
 
-
-/* =========================================
-   SETTINGS
-   ========================================= */
-
 .settings-content {
     display: flex;
     align-items: center;
@@ -1193,11 +1134,6 @@ h4 {
     border-radius: 8px;
     outline: none;
 }
-
-
-/* =========================================
-   RIGHT SIDEBAR
-   ========================================= */
 
 .right-sidebar {
     position: fixed;
@@ -1222,11 +1158,6 @@ h4 {
 
     z-index: 40;
 }
-
-
-/* =========================================
-   MONEY COACH
-   ========================================= */
 
 .coach-panel {
     padding: 16px;
@@ -1288,10 +1219,6 @@ h4 {
 }
 
 
-/* =========================================
-   BUTTONS
-   ========================================= */
-
 .primary-button {
     background: var(--blue);
     color: white;
@@ -1326,10 +1253,6 @@ h4 {
     background: #dfe6f0;
 }
 
-
-/* =========================================
-   ALERTS
-   ========================================= */
 
 .alerts-panel {
     background: #fffaf2;
@@ -1384,10 +1307,6 @@ h4 {
 }
 
 
-/* =========================================
-   MINI SPENDING PERSONALITY
-   ========================================= */
-
 .personality-mini .panel-heading a {
     font-size: 11px;
 }
@@ -1413,10 +1332,6 @@ h4 {
     color: #64748b;
 }
 
-
-/* =========================================
-   QUICK ACTIONS
-   ========================================= */
 
 .quick-grid {
     display: grid;
@@ -1483,10 +1398,6 @@ h4 {
     color: #0c9eaf;
 }
 
-
-/* =========================================
-   MODAL
-   ========================================= */
 
 .modal-overlay {
     display: none;
@@ -1592,10 +1503,6 @@ h4 {
     font-size: 12px;
 }
 
-
-/* =========================================
-   RESPONSIVE DESIGN
-   ========================================= */
 
 @media (max-width: 1450px) {
 
@@ -1843,10 +1750,6 @@ h4 {
 }
 
 
-/* =========================================
-   FINANCIAL GOAL ACTION BUTTONS
-   ========================================= */
-
 .goal-actions {
     display: flex;
     flex-wrap: wrap;
@@ -1890,11 +1793,6 @@ h4 {
 }
 
 
-
-/* =========================================
-   BILL DELETE BUTTON
-   ========================================= */
-
 .bill-row {
     grid-template-columns: minmax(0, 1fr) 75px 90px auto;
     gap: 8px;
@@ -1933,10 +1831,6 @@ h4 {
         font-size: 10px;
     }
 }
-
-/* =========================================
-   TRANSACTION DELETE BUTTON
-   ========================================= */
 
 .transaction-delete-button {
     background: #fff0f0;
@@ -1999,10 +1893,6 @@ h4 {
     display: flex;
     align-items: center;
 }
-
-/* ============================= */
-/* MONEY COACH PAGE */
-/* ============================= */
 
 .money-coach-page {
     min-height: 100vh;
